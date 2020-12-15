@@ -26,7 +26,7 @@ class XMLParser(object):
                 elif i.tag == 'min':
                     item.min = i.text
                 elif i.tag == 'category':
-                    category = i.text
+                    category = i.attrib['name']
                     if category != 'weapons':
                         item.item_type = category
                     else:

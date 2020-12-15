@@ -168,7 +168,7 @@ class GUI(object):
         self.tree = ttk.Treeview(self.treeFrame, columns=self.column_info[0], height=40)
         for col in self.column_info[1]:
             self.tree.heading(col[2], text=col[0], command=lambda _col=col[0]:
-            self.treeview_sort_column(self.tree, _col, False), )
+            self.tree_view_sort_column(self.tree, _col, False), )
             self.tree.column(col[2], width=col[1], stretch=0)
 
         self.tree.grid(row=0, column=0, sticky="nsew")
@@ -220,7 +220,7 @@ class GUI(object):
         usages = self.usagesListBox.curselection()
         values = [self.usagesListBox.get(i) for i in usages]
         usages = ",".join(values)
-
+        updated_item.usage = usages
         tires = self.tiersListBox.curselection()
         tire_values = [self.tiersListBox.get(i) for i in tires]
         tires = ",".join(tire_values)
@@ -317,7 +317,7 @@ class GUI(object):
         items = self.database.get_items()
         xml_writer.export_xml(items)
 
-    def treeview_sort_column(self, tv, col, reverse):
+    def tree_view_sort_column(self, tv, col, reverse):
         l = [(tv.set(k, col), k) for k in tv.get_children('')]
         l.sort(reverse=reverse)
 
@@ -326,7 +326,7 @@ class GUI(object):
             tv.move(k, '', index)
 
         # reverse sort next time
-        tv.heading(col, command=lambda _col=col: self.treeview_sort_column(tv, _col, not reverse))
+        tv.heading(col, command=lambda _col=col: self.tree_view_sort_column(tv, _col, not reverse))
 
 
 window = Tk()
