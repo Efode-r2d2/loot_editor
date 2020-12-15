@@ -7,7 +7,7 @@ from database.dao import DAO
 
 class DB(object):
     DATABASE_NAME = "dayz_items"
-    INI_FILE = "../app.ini"
+    INI_FILE = "app.ini"
     manage_ini = INIManager(INI_FILE)
 
     def __init__(self, root):
