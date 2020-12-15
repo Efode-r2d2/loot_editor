@@ -19,7 +19,7 @@ class NewItems(object):
         self.modSelector = ttk.Combobox(self.mod_frame, values=self.config.get_mods())
         self.modSelector.set(self.config.get_mods()[0])
         self.modSelector.grid(row=0, column=1)
-        self.ini_manger = INIManager("../app.ini")
+        self.ini_manger = INIManager("app.ini")
         self.database = DAO(self.ini_manger.read_ini("Database", "Database_Name"))
         self.duplicate = IntVar()
         self.duplicate.set(0)

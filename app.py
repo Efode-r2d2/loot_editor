@@ -37,8 +37,8 @@ class GUI(object):
         file_menu = Menu(self.menu_bar, tearoff=0)
         file_menu.add_command(label="Setup Database", command=self.__open_db_window)
         file_menu.add_separator()
-        file_menu.add_command(label="Add items...", command=self.__open_items_window)
-        file_menu.add_command(label="Export types.xml_manager...", command=self.__export_xml)
+        file_menu.add_command(label="Add Items", command=self.__open_items_window)
+        file_menu.add_command(label="Export XML File", command=self.__export_xml)
         file_menu.add_separator()
         file_menu.add_command(label="Exit", command=self.window.destroy)
 
@@ -312,7 +312,7 @@ class GUI(object):
         self.__populate_items()
 
     def __export_xml(self):
-        file = filediag.asksaveasfile(mode="a", defaultextension=".xml_manager")
+        file = filediag.asksaveasfile(mode="a", defaultextension=".xml")
         xml_writer = XMLWriter(filename=file.name)
         items = self.database.get_items()
         xml_writer.export_xml(items)
