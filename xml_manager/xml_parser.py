@@ -2,6 +2,28 @@ import xml.etree.ElementTree as ET
 from model.item import Item
 
 
+def is_mag(name):
+    if "mag" in name.lower():
+        return True
+    else:
+        return False
+
+
+def is_ammo(name):
+    if "ammo" in name.lower():
+        return True
+    else:
+        return False
+
+
+def is_optics(name):
+    name = name.lower()
+    if "optic" in name or "lrs" in name:
+        return True
+    else:
+        return False
+
+
 class XMLParser(object):
     def __init__(self, string_data):
         self.string_data = string_data
@@ -51,11 +73,11 @@ class XMLParser(object):
     def __get_type(self, name):
         if self.__is_gun(name=name):
             return "gun"
-        if self.__is_ammo(name=name):
+        if is_ammo(name=name):
             return "ammo"
-        if self.__is_mag(name=name):
+        if is_mag(name=name):
             return "mag"
-        if self.__is_optics(name=name):
+        if is_optics(name=name):
             return "optic"
         return "attachment"
 
@@ -67,25 +89,6 @@ class XMLParser(object):
                 is_gun = False
                 break
         return is_gun
-
-    def __is_mag(self, name):
-        if "mag" in name.lower():
-            return True
-        else:
-            return False
-
-    def __is_ammo(self, name):
-        if "ammo" in name.lower():
-            return True
-        else:
-            return False
-
-    def __is_optics(self, name):
-        name = name.lower()
-        if "optic" in name or "lrs" in name:
-            return True
-        else:
-            return False
 
     def __remove_mod_prefix(self, name):
         for prefix in self.mod_prefixes:

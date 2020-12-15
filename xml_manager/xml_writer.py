@@ -17,8 +17,8 @@ def get_type_block(item: Item):
     # min
     _min = ET.SubElement(type_block, "min")
     _min.text = str(item.min)
-    quant_min = ET.SubElement(type_block,"quantmin")
-    quant_min.text ="-1"
+    quant_min = ET.SubElement(type_block, "quantmin")
+    quant_min.text = "-1"
     quant_max = ET.SubElement(type_block, "quantmax")
     quant_max.text = "1"
     cost = ET.SubElement(type_block, "cost")
@@ -45,32 +45,16 @@ def get_type_block(item: Item):
         tire = ET.SubElement(type_block, 'value')
         tire.set('name', i)
 
-
-    return ET.tostring(type_block).decode("utf-8").replace("><",">\n<")
+    return ET.tostring(type_block).decode("utf-8").replace("><", ">\n<")
 
 
 class XMLWriter(object):
     def __init__(self, filename):
         self.filename = filename
 
-    def test_writer_xml(self):
-        data = ET.Element('data')
-        items = ET.SubElement(data, 'items')
-        item1 = ET.SubElement(items, 'item')
-        item2 = ET.SubElement(items, 'item')
-        item1.set('name', 'item1')
-        item2.set('name', 'item2')
-        item1.text = 'item1abc'
-        item2.text = 'item2abc'
-
-        # create a new XML file with the results
-        mydata = ET.tostring(data).decode("utf-8")
-        print(mydata)
-        myfile = open("items2.xml_manager", "a")
-        myfile.write(mydata)
-
     def export_xml(self, items):
         xml_file = open(self.filename, "a")
+        xml_file.write('<?xml version="1.0" encoding="UTF-8" standalone="yes"?>')
         xml_file.write("\n<types>")
         for i in items:
             xml_file.write("\n" + get_type_block(i))

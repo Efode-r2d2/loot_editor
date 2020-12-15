@@ -56,63 +56,14 @@ class DB(object):
                 if self.selected_db_action.get() == "new":
                     InitDatabase(self.db_name.get())
                     self.manage_ini.write_ini(section="Database", sub_section="Database_Name", value=self.db_name.get())
-                    self.db_status.set("Database connected to: "+self.db_name.get())
+                    self.db_status.set("Database connected to: " + self.db_name.get())
                 else:
                     if DAO(self.db_name.get()).items_table_exist():
-                        self.manage_ini.write_ini(section="Database", sub_section="Database_Name", value=self.db_name.get())
-                        self.db_status.set("Database connected to: "+self.db_name.get())
+                        self.manage_ini.write_ini(section="Database", sub_section="Database_Name",
+                                                  value=self.db_name.get())
+                        self.db_status.set("Database connected to: " + self.db_name.get())
                     else:
                         self.db_status.set("items table doesn't exist! Please initialize your Database.")
-
-    '''def openTypes(self):
-        self.typesDir.set(windows.openFile("xml_manager"))
-
-    def createTest(self):
-        if self.v.get() == "create":
-            self.passParams()
-            self.createDatabase()
-            windows.connectionSuccess(self.window)
-            if self.typesDir.get() != "":
-                windows.writeTypesToDatabase(self.typesDir.get())
-        else:
-            self.testDB()
-
-    def createDatabase(self):
-        try:
-            dao.createDB(self.database.get())
-            dao.loadDB(windows.getContent(windows.dataPath + "\\GENESIS.sql"))
-        except Exception as e:
-            windows.showError(self.window, "Error", "Failed to connect:\n" + str(e))
-            windows.deleteParams()
-
-    def testDB(self):
-        self.passParams()
-        try:
-            dao.getNominalByType("gun")
-            windows.connectionSuccess(self.window)
-        except Exception as e:
-            windows.showError(self.window, "Error", "Failed to connect:\n" + str(e))
-            windows.deleteParams()
-
-    def set(self):
-        self.passParams()
-        self.window.destroy()
-        dao.setColumnNames()
-
-    def passParams(self):
-        dao.setConnectionParams(self.username.get(),
-                                self.password.get(),
-                                self.port.get(),
-                                self.database.get(),
-                                self.HostName.get(),
-                                "8.0")
-
-        dao.setConnectionParams(self.username.get(),
-                                self.password.get(),
-                                self.port.get(),
-                                self.database.get(),
-                                self.HostName.get(),
-                                dao.getOdbcVersion())'''
 
 
 def testWindow():
