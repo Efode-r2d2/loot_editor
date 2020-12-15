@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from item import Item
+from model.item import Item
 
 
 class XMLParser(object):

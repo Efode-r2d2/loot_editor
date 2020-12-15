@@ -1,11 +1,11 @@
 import sqlite3
-from sqlalchemy import create_engine, and_
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from item import Item
+from model.item import Item
 
 
-class Database(object):
+class DAO(object):
     def __init__(self, db_name):
         self.db_name = db_name
         engine = create_engine(f"sqlite:///{db_name}")

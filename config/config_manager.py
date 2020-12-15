@@ -1,7 +1,7 @@
 from xml.dom import minidom
 
 
-class Config(object):
+class ConfigManager(object):
     def __init__(self, config_file):
         self.config_file = minidom.parse(config_file)
 

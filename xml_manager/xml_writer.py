@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from application import Item
+from model.item import Item
 
 
 def get_type_block(item: Item):
@@ -66,7 +66,7 @@ class XMLWriter(object):
         # create a new XML file with the results
         mydata = ET.tostring(data).decode("utf-8")
         print(mydata)
-        myfile = open("items2.xml", "a")
+        myfile = open("items2.xml_manager", "a")
         myfile.write(mydata)
 
     def export_xml(self, items):
