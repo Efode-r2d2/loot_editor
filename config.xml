@@ -30,7 +30,7 @@
         <rarity value="Rarity 2"/>
     </rairties>
     <tree>
-         <node name="ID" width ="80" col_id="#0" stretch="YES"/>
+        <node name="ID" width ="80" col_id="#0" stretch="YES"/>
         <node name="Name" width ="80" col_id="#1" stretch="YES"/>
         <node name="Nominal" width ="80" col_id="#2" stretch="YES"/>
         <node name="Min" width="80" col_id="#3" stretch="YES"/>
