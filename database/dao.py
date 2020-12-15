@@ -19,7 +19,7 @@ class DAO(object):
 
     # create item
     def create_item(self, item: Item, duplicate=0):
-        if duplicate == 0:
+        if duplicate == 1:
             self.session.add(item)
             self.session.commit()
         else:
