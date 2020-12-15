@@ -8,7 +8,7 @@ from ui.new_items import NewItems
 from ui.combo_box_manager import ComboBoxManager
 from config.ini_manager import INIManager
 from xml_manager.xml_writer import XMLWriter
-import tkinter.filedialog as filediag
+import tkinter.filedialog as filedialog
 
 
 class GUI(object):
@@ -312,7 +312,7 @@ class GUI(object):
         self.__populate_items()
 
     def __export_xml(self):
-        file = filediag.asksaveasfile(mode="a", defaultextension=".xml")
+        file = filedialog.asksaveasfile(mode="a", defaultextension=".xml")
         xml_writer = XMLWriter(filename=file.name)
         items = self.database.get_items()
         xml_writer.export_xml(items)
